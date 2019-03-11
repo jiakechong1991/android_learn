@@ -1,0 +1,120 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/wangxiaoke/project/android/android2/filedialog/build/intermediates/res/merged/release/values/values.xml",
+            "map": [
+                {
+                    "source": "/Users/wangxiaoke/project/android/android2/filedialog/src/main/res/values/dimens.xml",
+                    "from": {
+                        "startLines": "3,4",
+                        "startColumns": "4,4",
+                        "startOffsets": "89,147",
+                        "endColumns": "57,55",
+                        "endOffsets": "142,198"
+                    },
+                    "to": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,113",
+                        "endColumns": "57,55",
+                        "endOffsets": "108,164"
+                    }
+                },
+                {
+                    "source": "/Users/wangxiaoke/project/android/android2/filedialog/src/main/res/values/strings.xml",
+                    "from": {
+                        "startLines": "4,3,8,6,9,5,7",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "94,56,302,188,362,136,250",
+                        "endColumns": "41,37,59,61,48,51,51",
+                        "endOffsets": "131,89,357,245,406,183,297"
+                    },
+                    "to": {
+                        "startLines": "4,5,6,7,8,9,10",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "169,211,249,309,371,420,472",
+                        "endColumns": "41,37,59,61,48,51,51",
+                        "endOffsets": "206,244,304,366,415,467,519"
+                    }
+                },
+                {
+                    "source": "/Users/wangxiaoke/project/android/android2/filedialog/src/main/res/values/styles.xml",
+                    "from": {
+                        "startLines": "6,15",
+                        "startColumns": "4,4",
+                        "startOffsets": "186,510",
+                        "endLines": "12,17",
+                        "endColumns": "12,12",
+                        "endOffsets": "472,665"
+                    },
+                    "to": {
+                        "startLines": "11,18",
+                        "startColumns": "4,4",
+                        "startOffsets": "524,815",
+                        "endLines": "17,20",
+                        "endColumns": "12,12",
+                        "endOffsets": "810,970"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/wangxiaoke/project/android/android2/filedialog/build/intermediates/incremental/mergeReleaseResources/merged.dir/values/values.xml",
+            "map": [
+                {
+                    "source": "/Users/wangxiaoke/project/android/android2/filedialog/src/main/res/values/dimens.xml",
+                    "from": {
+                        "startLines": "3,4",
+                        "startColumns": "4,4",
+                        "startOffsets": "89,147",
+                        "endColumns": "57,55",
+                        "endOffsets": "142,198"
+                    },
+                    "to": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,113",
+                        "endColumns": "57,55",
+                        "endOffsets": "108,164"
+                    }
+                },
+                {
+                    "source": "/Users/wangxiaoke/project/android/android2/filedialog/src/main/res/values/strings.xml",
+                    "from": {
+                        "startLines": "4,3,8,6,9,5,7",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "94,56,302,188,362,136,250",
+                        "endColumns": "41,37,59,61,48,51,51",
+                        "endOffsets": "131,89,357,245,406,183,297"
+                    },
+                    "to": {
+                        "startLines": "4,5,6,7,8,9,10",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "169,211,249,309,371,420,472",
+                        "endColumns": "41,37,59,61,48,51,51",
+                        "endOffsets": "206,244,304,366,415,467,519"
+                    }
+                },
+                {
+                    "source": "/Users/wangxiaoke/project/android/android2/filedialog/src/main/res/values/styles.xml",
+                    "from": {
+                        "startLines": "6,15",
+                        "startColumns": "4,4",
+                        "startOffsets": "186,510",
+                        "endLines": "12,17",
+                        "endColumns": "12,12",
+                        "endOffsets": "472,665"
+                    },
+                    "to": {
+                        "startLines": "11,18",
+                        "startColumns": "4,4",
+                        "startOffsets": "524,815",
+                        "endLines": "17,20",
+                        "endColumns": "12,12",
+                        "endOffsets": "810,970"
+                    }
+                }
+            ]
+        }
+    ]
+}
