@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:text="XML设置六位背景颜色"
         android:textSize="18sp"
+        android:textColor="@color/black"
         android:background="#00ff00" />
 
     <TextView

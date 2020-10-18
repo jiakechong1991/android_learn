@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         // 判定点击发生在哪个 view上,然后启动不动的调用函数
         if (v.getId() == R.id.btn_px) {
+            // 可以在 一个组件中，启动APP的另一个组件（组件经常指：Activity、Service以及Broadcast）
             Intent intent = new Intent(this, PxActivity.class);
             startActivity(intent);
         } else if (v.getId() == R.id.btn_color) {

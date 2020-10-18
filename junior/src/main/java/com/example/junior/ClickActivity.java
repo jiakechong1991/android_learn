@@ -29,6 +29,7 @@ public class ClickActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) { // 点击事件的处理方法
             if (v.getId() == R.id.btn_click) { // 判断是否为btn_click被点击
+                // 在某个控件  上 显示一条文本，然后一小段时间后消失。
                 Toast.makeText(ClickActivity.this, "您点击了控件：" + ((TextView) v).getText(), Toast.LENGTH_SHORT).show();
             }
         }

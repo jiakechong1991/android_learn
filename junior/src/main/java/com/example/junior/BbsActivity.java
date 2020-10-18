@@ -30,7 +30,7 @@ public class BbsActivity extends AppCompatActivity implements
         // 从布局文件中获取名叫tv_bbs的文本视图
         tv_bbs = findViewById(R.id.tv_bbs);
         // 给tv_bbs设置点击监听器
-        tv_bbs.setOnClickListener(this);
+        tv_bbs.setOnClickListener(this);  //绑定自身的click响应函数
         // 给tv_bbs设置长按监听器
         tv_bbs.setOnLongClickListener(this);
         // 设置tv_bbs内部文字的对齐方式为靠左且靠下
@@ -51,7 +51,7 @@ public class BbsActivity extends AppCompatActivity implements
         if (v.getId() == R.id.tv_control || v.getId() == R.id.tv_bbs) {
             // 生成一个0到4之间的随机数
             int random = (int) (Math.random() * 10) % 5;
-            // 拼接聊天的文本内容
+            // 【拼接】聊天的文本内容
             String newStr = String.format("%s\n%s %s",
                     tv_bbs.getText().toString(), DateUtil.getNowTime(), mChatStr[random]);
             // 设置文本视图tv_bbs的文本内容
