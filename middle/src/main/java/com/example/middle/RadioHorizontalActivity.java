@@ -24,7 +24,7 @@ public class RadioHorizontalActivity extends AppCompatActivity implements OnChec
         // 给rg_sex设置单选监听器，一旦用户点击组内的单选按钮，就触发监听器的onCheckedChanged方法
         rg_sex.setOnCheckedChangeListener(this);
         // 给rg_sex设置单选监听器，一旦用户点击组内的单选按钮，就触发监听器的onCheckedChanged方法
-        //rg_sex.setOnCheckedChangeListener(new RadioListener());
+//        rg_sex.setOnCheckedChangeListener(new RadioListener());
     }
 
     // 在用户点击组内的单选按钮时触发
