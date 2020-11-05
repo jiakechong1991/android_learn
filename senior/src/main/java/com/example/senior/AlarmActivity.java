@@ -64,7 +64,7 @@ public class AlarmActivity extends AppCompatActivity implements OnClickListener 
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.btn_alarm) {
+        if (v.getId() == R.id.btn_alarm) {  //如果点击的是按钮
             // 创建一个广播事件的意图
             Intent intent = new Intent(ALARM_EVENT);
             // 创建一个用于广播的延迟意图
