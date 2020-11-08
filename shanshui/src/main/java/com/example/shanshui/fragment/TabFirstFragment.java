@@ -47,7 +47,7 @@ public class TabFirstFragment extends Fragment implements OnClickListener  {
 
     // HTTP访问
 //    private String mAddressUrl = "http://api.tianditu.gov.cn/geocoder?postStr={'lon':%f,'lat':%f,'ver':1}&type=geocode";
-    private String mAddressUrl = "http://127.0.0.1:8888/time?name=%f&age=%f";
+    private String mAddressUrl = "http://127.0.0.1:8888/time?name=%s&age=%s";
 
 
     @Override
@@ -94,7 +94,11 @@ public class TabFirstFragment extends Fragment implements OnClickListener  {
                         put("age", "18");
                     }
                 };
-                GetServerInfo(param_);
+                try{
+                    GetServerInfo(param_);
+                }catch (Exception e){
+                    Log.e(TAG, Log.getStackTraceString(e));
+                }
             } else if (type == 1) {
             }
         }
@@ -103,7 +107,9 @@ public class TabFirstFragment extends Fragment implements OnClickListener  {
     public Object GetServerInfo(HashMap<String, String> data){
         
         //构造URL参数
+        Log.d(TAG, data.get("name"));
         String url = String.format(mAddressUrl, data.get("name"), data.get("age"));
+        Log.d(TAG, url);
         // 创建一个HTTP请求对象
         HttpReqData req_data = new HttpReqData(url);
         // 发送HTTP请求信息，并获得HTTP应答对象
