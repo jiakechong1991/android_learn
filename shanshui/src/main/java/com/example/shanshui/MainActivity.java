@@ -3,8 +3,10 @@ package com.example.shanshui;
 import com.example.shanshui.fragment.TabFirstFragment;
 import com.example.shanshui.fragment.TabSecondFragment;
 import com.example.shanshui.fragment.TabThirdFragment;
+import com.example.shanshui.util.PermissionUtil;
 
 
+import android.Manifest;
 import android.nfc.Tag;
 import android.util.Log;
 import android.graphics.drawable.Drawable;
@@ -37,9 +39,12 @@ public class MainActivity extends AppCompatActivity {
         tabHost = findViewById(android.R.id.tabhost);
         // 把实际的内容框架安装到碎片标签栏
         tabHost.setup(this, getSupportFragmentManager(), R.id.tabcontent);
+
         // 往标签栏添加第一个标签，其中内容视图展示TabFirstFragment
-        tabHost.addTab(getTabView(R.string.menu_first, R.drawable.tab_first_selector),
-                TabFirstFragment.class, bundle);
+        if(PermissionUtil.checkPermission(this, Manifest.permission.CAMERA, 1)){
+            tabHost.addTab(getTabView(R.string.menu_first, R.drawable.tab_first_selector),
+                    TabFirstFragment.class, bundle);
+        }
         // 往标签栏添加第二个标签，其中内容视图展示TabSecondFragment
         tabHost.addTab(getTabView(R.string.menu_second, R.drawable.tab_second_selector),
                 TabSecondFragment.class, bundle);

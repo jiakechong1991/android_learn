@@ -5,19 +5,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.example.shanshui.sensor.CameraView;
 
 public class TakePictureActivity extends AppCompatActivity implements View.OnClickListener  {
-    private static final String TAG = "TakePictureActivity";
+    private static final String TAG = "TabFragmentActivity";
     private CameraView camera_view; // 声明一个相机视图对象
     private int mTakeType = 0; // 拍照类型。0为单拍，1为连拍
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG, "我进到了TabFragmentActivity");
         setContentView(R.layout.activity_take_picture);
         // 获取前一个页面传来的摄像头类型
         int camera_type = getIntent().getIntExtra("type", CameraView.CAMERA_BEHIND);
@@ -64,9 +66,6 @@ public class TakePictureActivity extends AppCompatActivity implements View.OnCli
                 }
             }, 1500);
         } else if (v.getId() == R.id.btn_shooting) { // 点击了连拍按钮
-            mTakeType = 1;
-            // 命令相机视图执行连拍操作
-            camera_view.doTakeShooting();
         }
     }
 

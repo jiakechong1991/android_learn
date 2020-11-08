@@ -1,7 +1,10 @@
 package com.example.shanshui.fragment;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.hardware.Camera;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.content.Context;
@@ -20,6 +23,8 @@ import android.widget.Toast;
 import com.example.shanshui.R;
 import com.example.shanshui.TakePictureActivity;
 import com.example.shanshui.sensor.CameraView;
+
+import java.util.ArrayList;
 
 
 public class TabFirstFragment extends Fragment implements OnClickListener  {
@@ -59,6 +64,41 @@ public class TabFirstFragment extends Fragment implements OnClickListener  {
 
     }
 
+    // 处理Camera拍照页面的返回结果
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        Log.d(TAG, "onActivityResult. requestCode=" + requestCode + ", resultCode=" + resultCode);
+        Bundle resp = intent.getExtras(); // 获取返回的包裹
+        String is_null = resp.getString("is_null");
+        if (!TextUtils.isEmpty(is_null) && !is_null.equals("yes")) { // 有发生拍照动作
+            int type = resp.getInt("type");
+            Log.d(TAG, "type=" + type);
+            if (type == 0) { // 单拍。一次只拍一张
+                iv_photo.setVisibility(View.VISIBLE);
+                gv_shooting.setVisibility(View.GONE);
+                String path = resp.getString("path");
+                fillBitmap(BitmapFactory.decodeFile(path, null));
+            } else if (type == 1) {
+            }
+        }
+    }
+
+    // 以合适比例显示照片
+    private void fillBitmap(Bitmap bitmap) {
+        Log.d(TAG, "fillBitmap width=" + bitmap.getWidth() + ",height=" + bitmap.getHeight());
+        // 位图的高度大于框架布局的高度，则按比例调整图像视图的宽高
+        if (bitmap.getHeight() > fl_content.getMeasuredHeight()) {
+            ViewGroup.LayoutParams params = iv_photo.getLayoutParams();
+            params.height = fl_content.getMeasuredHeight();
+            params.width = bitmap.getWidth() * fl_content.getMeasuredHeight() / bitmap.getHeight();
+            // 设置iv_photo的布局参数
+            iv_photo.setLayoutParams(params);
+        }
+        // 设置iv_photo的拉伸类型为居中
+        iv_photo.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        // 设置iv_photo的位图对象
+        iv_photo.setImageBitmap(bitmap);
+    }
+
     @Override
     public void onClick(View v){
         Log.d(TAG, "getNumberOfCameras=" + Camera.getNumberOfCameras());
@@ -67,14 +107,26 @@ public class TabFirstFragment extends Fragment implements OnClickListener  {
             if(mCamera != null){
                 mCamera.release();  //释放摄像头
                 Intent intent = new Intent(mContext, TakePictureActivity.class); // 前往camera的拍照页面
+                Log.d(TAG, "2222进到这里了");
                 intent.putExtra("type", CameraView.CAMERA_BEHIND); //类型是后置摄像
+                Log.d(TAG, "进到这里了3333");
+                //处理拍照页面的返回值
+                startActivityForResult(intent, 1);
+                Log.d(TAG, "进到这里了4444");
+            }else{
+                Toast.makeText(mContext, "当前设备不支持后置摄像头", Toast.LENGTH_SHORT).show();
+            }
+        }else if(v.getId() == R.id.btn_catch_front){  //打开前置摄像头
+            Camera mCamera = Camera.open();
+            if(mCamera != null){
+                mCamera.release();  //释放摄像头
+                Intent intent = new Intent(mContext, TakePictureActivity.class); // 前往camera的拍照页面
+                intent.putExtra("type", CameraView.CAMERA_FRONT); //类型是前置摄像
                 //处理拍照页面的返回值
                 startActivityForResult(intent, 1);
             }else{
                 Toast.makeText(mContext, "当前设备不支持后置摄像头", Toast.LENGTH_SHORT).show();
             }
-        }else if(v.getId() == R.id.btn_catch_front){  //打开前置摄像头
-            Toast.makeText(mContext, "当前设备前摄像头", Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(mContext, "当前设备不支持摄像头", Toast.LENGTH_SHORT).show();
         }
