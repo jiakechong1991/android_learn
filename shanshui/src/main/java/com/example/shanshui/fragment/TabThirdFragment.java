@@ -18,7 +18,7 @@ public class TabThirdFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         mContext = getActivity();  //获取活动页上下文
         // 根据布局文件fragment_tab_second.xml生成视图对象
-        mView = inflater.inflate(R.layout, container, false);
+        mView = inflater.inflate(R.layout.fragment_thrid_tab, container, false);
         // 根据碎片标签栏传来的参数拼接文本字符串
         String desc = String.format("我是%s页面，来自%s",
                 "分类", getArguments().getString("tag"));
