@@ -23,8 +23,15 @@ import android.widget.Toast;
 import com.example.shanshui.R;
 import com.example.shanshui.TakePictureActivity;
 import com.example.shanshui.sensor.CameraView;
+import com.example.shanshui.sensor.HttpRequestUtil;
+import com.example.shanshui.util.HttpReqData;
+import com.example.shanshui.util.HttpRespData;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class TabFirstFragment extends Fragment implements OnClickListener  {
@@ -37,6 +44,9 @@ public class TabFirstFragment extends Fragment implements OnClickListener  {
     private FrameLayout fl_content; //声明一个FrameLayout对象
     private ImageView iv_photo; // 声明一个图像视图对象
     private GridView gv_shooting; // 声明一个网络视图
+
+    // HTTP访问
+    private String mAddressUrl = "http://api.tianditu.gov.cn/geocoder?postStr={'lon':%f,'lat':%f,'ver':1}&type=geocode";
 
 
     @Override
@@ -80,6 +90,32 @@ public class TabFirstFragment extends Fragment implements OnClickListener  {
             } else if (type == 1) {
             }
         }
+    }
+
+    public Object GetServerInfo(HashMap<String, Object> data){
+        // 创建一个HTTP请求对象
+        HttpReqData req_data = new HttpReqData(mAddressUrl);
+        // 发送HTTP请求信息，并获得HTTP应答对象
+        HttpRespData resp_data = HttpRequestUtil.getData(req_data);
+        Log.d(TAG, "return json = " + resp_data.content);
+        String address = "未知";
+        // 下面从json串中逐级解析formatted_address字段获得详细地址描述
+        if (resp_data.err_msg.length() <= 0) {
+            try {
+                JSONObject obj = new JSONObject(resp_data.content);
+//                JSONArray resultArray = obj.getJSONArray("results");
+//                if (resultArray.length() > 0) {
+//                    JSONObject resultObj = resultArray.getJSONObject(0);
+//                    address = resultObj.getString("formatted_address");
+//                }
+                JSONObject result = obj.getJSONObject("result");
+                address = result.getString("formatted_address");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        Log.d(TAG, "address = " + address);
+        return address; // 返回HTTP应答内容中的详细地址
     }
 
     // 以合适比例显示照片
