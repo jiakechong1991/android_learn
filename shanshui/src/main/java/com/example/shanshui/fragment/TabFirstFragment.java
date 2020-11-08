@@ -15,6 +15,7 @@ public class TabFirstFragment extends Fragment {
     protected Context mContext; // 声明上下文对象
     protected View mView; // 声明视图对象
 
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mContext = getActivity(); //获取页面上下文
 

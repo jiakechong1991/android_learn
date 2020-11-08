@@ -15,6 +15,7 @@ public class TabThirdFragment extends Fragment {
     protected View mView;  //声明一个视图对象
     protected Context mContext;  // 声明一个上下文对象
 
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         mContext = getActivity();  //获取活动页上下文
         // 根据布局文件fragment_tab_second.xml生成视图对象
@@ -22,8 +23,8 @@ public class TabThirdFragment extends Fragment {
         // 根据碎片标签栏传来的参数拼接文本字符串
         String desc = String.format("我是%s页面，来自%s",
                 "分类", getArguments().getString("tag"));
-        TextView tv_second = mView.findViewById(R.id.tv_second);
-        tv_second.setText(desc);
+        TextView tv_thrid = mView.findViewById(R.id.tv_third);
+        tv_thrid.setText(desc);
 
         return mView;
     }

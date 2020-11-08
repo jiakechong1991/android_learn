@@ -16,6 +16,7 @@ public class TabSecondFragment extends Fragment {
     protected View mView;  //声明一个视图对象
     protected Context mContext;  // 声明一个上下文对象
 
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         mContext = getActivity();  //获取活动页上下文
         // 根据布局文件fragment_tab_second.xml生成视图对象
