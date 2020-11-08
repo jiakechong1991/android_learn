@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         // 设置图形的四周边界。这里必须设置图片大小，否则无法显示图标
         drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
         // 根据布局文件item_tabbar.xml生成标签按钮对象
-        View item_tabbar = getLayoutInflater().inflate(R.layout.item_tabbar, null);
+        View item_tabbar = getLayoutInflater().inflate(R.layout.temp_layout, null);
         TextView tv_item = item_tabbar.findViewById(R.id.tv_item_tabbar);
         tv_item.setText(text);
         // 在文字上方显示标签的图标
