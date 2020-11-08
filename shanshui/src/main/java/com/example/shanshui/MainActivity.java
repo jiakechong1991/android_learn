@@ -5,6 +5,8 @@ import com.example.shanshui.fragment.TabSecondFragment;
 import com.example.shanshui.fragment.TabThirdFragment;
 
 
+import android.nfc.Tag;
+import android.util.Log;
 import android.graphics.drawable.Drawable;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v7.app.AppCompatActivity;
@@ -52,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
     private TabHost.TabSpec getTabView(int textId, int imgId) {
         // 根据资源编号获得字符串对象
         String text = getResources().getString(textId);
+        Log.d(TAG, text);
         // 根据资源编号获得图形对象
         Drawable drawable = getResources().getDrawable(imgId);
         // 设置图形的四周边界。这里必须设置图片大小，否则无法显示图标
@@ -63,6 +66,9 @@ public class MainActivity extends AppCompatActivity {
         // 在文字上方显示标签的图标
         tv_item.setCompoundDrawables(null, drawable, null, null);
         // 生成并返回该标签按钮对应的标签规格
+        // tabHost.newTabSpec(text).setIndicator(item_tabbar);
+        // text是tab的名称，item_tabbar是tab要展示的视图
         return tabHost.newTabSpec(text).setIndicator(item_tabbar);
     }
+
 }
