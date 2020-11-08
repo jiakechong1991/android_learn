@@ -61,7 +61,7 @@ public class CameraView extends SurfaceView {
     }
 
     // 下面是单拍的代码
-    // 执行拍照动作。外部调用该方法完成拍照
+    // 执行拍照动作。外部调用该方法完成拍照（但是该方法是异步的，返回后系统还在执行）
     public void doTakePicture() {
         if (isPreviewing && mCamera != null) {
             // 命令相机拍摄一张照片

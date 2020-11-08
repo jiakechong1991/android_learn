@@ -16,7 +16,7 @@ public class ProgressAsyncTask extends AsyncTask<String, Integer, String> {
         int ratio = 0;
         for (; ratio <= 100; ratio += 5) {
             try {
-                Thread.sleep(200); // 睡眠200毫秒模拟网络通信处理
+                Thread.sleep(1000); // 睡眠200毫秒模拟网络通信处理
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
