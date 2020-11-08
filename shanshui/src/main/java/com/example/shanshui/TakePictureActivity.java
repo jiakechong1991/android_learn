@@ -63,6 +63,7 @@ public class TakePictureActivity extends AppCompatActivity implements View.OnCli
                 @Override
                 public void run() {
                     Toast.makeText(TakePictureActivity.this, "已完成拍照，按返回键回到上页查看照片。", Toast.LENGTH_SHORT).show();
+                    onBackPressed(); // 我们的场景要求 拍照完毕后自动就会back回上一个页面。
                 }
             }, 1500);
         } else if (v.getId() == R.id.btn_shooting) { // 点击了连拍按钮
