@@ -18,6 +18,8 @@ import android.widget.Toast;
 
 
 import com.example.shanshui.R;
+import com.example.shanshui.TakePictureActivity;
+import com.example.shanshui.sensor.CameraView;
 
 
 public class TabFirstFragment extends Fragment implements OnClickListener  {
@@ -64,10 +66,10 @@ public class TabFirstFragment extends Fragment implements OnClickListener  {
             Camera mCamera = Camera.open();
             if(mCamera != null){
                 mCamera.release();  //释放摄像头
-//                Intent intent = new Intent(mContext, null); // 前往camera的拍照页面
-//                intent.putExtra("type", CameraView.);
+                Intent intent = new Intent(mContext, TakePictureActivity.class); // 前往camera的拍照页面
+                intent.putExtra("type", CameraView.CAMERA_BEHIND); //类型是后置摄像
                 //处理拍照页面的返回值
-//                startActivityForResult(intent, 1);
+                startActivityForResult(intent, 1);
             }else{
                 Toast.makeText(mContext, "当前设备不支持后置摄像头", Toast.LENGTH_SHORT).show();
             }
