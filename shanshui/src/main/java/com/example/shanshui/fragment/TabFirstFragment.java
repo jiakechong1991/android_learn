@@ -46,7 +46,8 @@ public class TabFirstFragment extends Fragment implements OnClickListener  {
     private GridView gv_shooting; // 声明一个网络视图
 
     // HTTP访问
-    private String mAddressUrl = "http://api.tianditu.gov.cn/geocoder?postStr={'lon':%f,'lat':%f,'ver':1}&type=geocode";
+//    private String mAddressUrl = "http://api.tianditu.gov.cn/geocoder?postStr={'lon':%f,'lat':%f,'ver':1}&type=geocode";
+    private String mAddressUrl = "http://127.0.0.1:8888/time?name=%f&age=%f";
 
 
     @Override
@@ -87,14 +88,24 @@ public class TabFirstFragment extends Fragment implements OnClickListener  {
                 gv_shooting.setVisibility(View.GONE);
                 String path = resp.getString("path");
                 fillBitmap(BitmapFactory.decodeFile(path, null));
+                HashMap<String, String> param_ = new HashMap<String, String>(){
+                    {
+                        put("name", "wxk");
+                        put("age", "18");
+                    }
+                };
+                GetServerInfo(param_);
             } else if (type == 1) {
             }
         }
     }
 
-    public Object GetServerInfo(HashMap<String, Object> data){
+    public Object GetServerInfo(HashMap<String, String> data){
+        
+        //构造URL参数
+        String url = String.format(mAddressUrl, data.get("name"), data.get("age"));
         // 创建一个HTTP请求对象
-        HttpReqData req_data = new HttpReqData(mAddressUrl);
+        HttpReqData req_data = new HttpReqData(url);
         // 发送HTTP请求信息，并获得HTTP应答对象
         HttpRespData resp_data = HttpRequestUtil.getData(req_data);
         Log.d(TAG, "return json = " + resp_data.content);
